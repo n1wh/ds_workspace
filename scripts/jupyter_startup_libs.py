@@ -11,6 +11,7 @@ import time
 import copy
 import pickle
 import requests
+import json
 
 # 3rd party
 import pandas as pd
@@ -20,6 +21,7 @@ pd.options.display.max_rows = 500
 import numpy as np
 import scipy as sc
 #from scipy.stats import probplot
+import tqdm
 
 # visualization
 #%matplotlib inline
@@ -27,7 +29,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 color = sns.color_palette()
 sns.set_style("darkgrid")
-sns.set_context("paper")
+#sns.set_context("paper")
 sns.palplot(color)
 #sns.set(rc={'figure.figsize': (9, 6)})
 
@@ -46,8 +48,8 @@ cf.set_config_file(theme='pearl')
 from pylab import rcParams
 
 SMALL_SIZE = 10
-MEDIUM_SIZE = 14
-BIGGER_SIZE = 18
+MEDIUM_SIZE = 12
+BIGGER_SIZE = 16
 
 rcParams['figure.figsize'] = 10, 6
 rcParams['figure.titlesize'] = BIGGER_SIZE
