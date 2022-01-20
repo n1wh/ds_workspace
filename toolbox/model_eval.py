@@ -14,7 +14,7 @@ from sklearn.metrics import roc_auc_score
 
 def eval_classifier(y_true: np.array, y_pred_prob: np.array, target_class_thr: float=0.5, model=None, return_thr_tables: bool=False) -> None:
     
-    y_pred = [1 if row[1] >= thr else 0 for row in y_pred_prob]
+    y_pred = [1 if row[1] >= target_class_thr else 0 for row in y_pred_prob]
     y_target_prob = y_pred_prob[:, 1]
     
     # print out a general classification report
