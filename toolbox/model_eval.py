@@ -6,6 +6,7 @@ import seaborn as sns
 
 from sklearn.metrics import roc_curve, precision_recall_curve, auc
 from sklearn.metrics import confusion_matrix, roc_auc_score, f1_score
+from sklearn.metrics import classification_report
 
 from sklearn.calibration import calibration_curve
 
@@ -20,7 +21,7 @@ def eval_classifier(y_true: np.array, y_pred_prob: np.array, target_class_thr: f
     # print out a general classification report
     print(
         f"Classification report:\n\tModel: {model}\n\n"
-        f"{metrics.classification_report(y_true, y_pred)}"
+        f"{classification_report(y_true, y_pred)}"
     )
     
     # calculate Confusion matrix
@@ -55,7 +56,7 @@ def eval_classifier(y_true: np.array, y_pred_prob: np.array, target_class_thr: f
     cm_ax.set_ylabel('True', fontsize=font_size)
     
     # calculate roc curves
-    fpr, tpr, thresholds = roc_curve(y_test, y_target_prob)#, pos_label=9)
+    fpr, tpr, thresholds = roc_curve(y_true, y_target_prob)#, pos_label=9)
     roc_auc = round(roc_auc_score(y_true, y_target_prob), float_precision)
     
     if return_thr_tables == True:
@@ -75,7 +76,7 @@ def eval_classifier(y_true: np.array, y_pred_prob: np.array, target_class_thr: f
     
     
     # calculate precision-recall curve
-    precision, recall, thresholds = precision_recall_curve(y_test, y_pred_prob[:, 1])#, pos_label=9)
+    precision, recall, thresholds = precision_recall_curve(y_true, y_target_prob)#, pos_label=9)
     f1 = round(f1_score(y_true=y_true, y_pred=y_pred), float_precision)
     pr_auc = round(auc(recall, precision), float_precision)
 
