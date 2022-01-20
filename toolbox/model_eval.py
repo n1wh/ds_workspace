@@ -68,10 +68,10 @@ def eval_classifier(y_true: np.array, y_pred_prob: np.array, target_class_thr: f
     roc_ax.plot(fpr, tpr, marker=None, label='Model', color='red')
     roc_ax.plot([0, 1], linestyle='--', label='Random', color='grey')
     
-    roc_ax.set_title(f'ROC AUC = %.{float_precision}f'%roc_auc)
+    roc_ax.set_title(f'ROC AUC = {roc_auc}')
     roc_ax.set_xlabel('False Positive Rate (FPR)', fontsize=font_size)
     roc_ax.set_ylabel('True Positive Rate (TPR)', fontsize=font_size)
-    roc_ax.legend(loc='lower right')
+    roc_ax.legend()
     roc_ax.grid(linewidth=0.5)
     
     
@@ -96,7 +96,7 @@ def eval_classifier(y_true: np.array, y_pred_prob: np.array, target_class_thr: f
     pr_ax.set_title(f'PR AUC = {pr_auc}, F1 = {f1}')
     pr_ax.set_xlabel('Recall', fontsize=font_size)
     pr_ax.set_ylabel('Precision', fontsize=font_size)
-    pr_ax.legend(loc='lower left')
+    pr_ax.legend()
     pr_ax.grid(linewidth=0.5)
 
     plt.show()
