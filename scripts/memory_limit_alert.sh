@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# cron-ready
+# */1 * * * * eval "export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME gnome-session)/environ)"; /usr/bin/flock -n /tmp/my.lockfile /path/to/script.sh
+
 #Minimum available memory limit, MB
 THRESHOLD=1500
 
